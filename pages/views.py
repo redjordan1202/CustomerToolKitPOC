@@ -59,7 +59,7 @@ def download_packet(request):
 
 
     session_key = request.session.session_key
-    packet_path = os.path.join(settings.BASE_DIR, "media", f"packet__{session_key}.pdf")
+    packet_path = os.path.join(settings.BASE_DIR, "media", f"packet_{session_key}.pdf")
 
     with open(packet_path, "rb") as f:
         response = HttpResponse(f, content_type="application/pdf")
