@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Kit</title>
+</head>
+<body>
+    <form id="turfForm" method="post" action="{% url 'pages:result' %}">
+        {% csrf_token %}
+        <label for="userCategory">I am a: </label>
+        <select id="userCategory" name="userCategory">
+            <option value="">Select an option</option>
+            <option value="Homeowner">Homeowner</option>
+            <option value="HomeownersAssociation">HOA</option>
+            <option value="PropertyManager">Property Manager</option>
+            <option value="Builder">Builder</option>
+            <option value="Municipality">Municipality</option>
+        </select>
+        
+        <div id="modifierContainer">
+            <label for="modifierQuestion" id="modifierQuestionLabel">I am looking for pet friendly turf</label>
+            <input type="checkbox" id="modifierQuestion" name="petFriendly">
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+<script>
+    const userCategory = document.getElementById("userCategory")
+    const modifierContainer = document.getElementById("modifierContainer")
+    const modifierQuestion = document.getElementById("modifierQuestion")
+    const modifierQuestionLabel = document.getElementById("modifierQuestionLabel")
+    
+    userCategory.addEventListener('change', () => {
+            console.log(userCategory.value)
+
+            if (userCategory.value === 'homeowner' ||
+                userCategory.value === 'hoa' ||
+                userCategory.value === 'propertyManager') {
+                modifierQuestionLabel.textContent = "I am looking for Pet Friendly Turf"
+                modifierQuestion.name = "petFriendly"
+            } else if (
+                userCategory.value === 'builder' ||
+                userCategory.value === 'municipality') {
+                modifierQuestionLabel.textContent = "I am looking for Sports Field Turf"
+                modifierQuestion.name = "sportsField"
+            }
+        }
+    )
+    
+    
+</script>
+
+</html>

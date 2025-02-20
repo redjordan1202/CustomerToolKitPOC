@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+</head>
+<body>
+    {% csrf_token %}
+    {% for turf in results %}
+        <span>{{ turf.name }}</span> <br>
+    {% endfor %}
+
+    <button><a href="{% url 'pages:download' %}">Download Packet</a></button>
+
+</body>
+</html>

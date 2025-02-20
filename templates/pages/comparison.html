@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turf Comparison</title>
+    <style>
+        @page {
+            size: letter landscape;
+            margin: 20mm;
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 20mm;
+        }
+
+      .container {
+            width: 100%;
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #222; /* Dark background for header */
+            color: #DAA520; /* Gold text color for header */
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #f0fff0; /* Light green for odd rows */
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f5fff5; /* Slightly lighter green for even rows */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #006400; /* Dark green for heading */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Turf Comparison</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    {% for turf in results %}
+                    <th>{{ turf.name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Blade Shape</td>
+                    {% for turf in results %}
+                    <td>{{ turf.blade_shape }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Blade Material</td>
+                    {% for turf in results %}
+                    <td>{{ turf.blade_material }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Backing Material</td>
+                    {% for turf in results %}
+                    <td>{{ turf.backing_material }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Pile Height</td>
+                    {% for turf in results %}
+                    <td>{{ turf.pile_height }}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
