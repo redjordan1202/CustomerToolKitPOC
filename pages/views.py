@@ -42,6 +42,8 @@ def result(request):
         results = TurfType.objects.filter(category__name=form_data.get('userCategory')).exclude(pet_friendly=False)[:3]
     elif form_data.get("sportsField"):
         results = TurfType.objects.filter(category__name=form_data.get('userCategory')).exclude(sports_field=False)[:3]
+    else:
+        results = TurfType.objects.filter(category__name=form_data.get('userCategory'))[:3]
 
     context = {"results": results}
 
