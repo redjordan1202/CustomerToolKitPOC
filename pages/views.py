@@ -36,12 +36,14 @@ def result(request):
         return HttpResponseBadRequest
 
 
-    results= TurfType.objects.filter(category__name=form_data.get('userCategory'))[:3]
+
 
     if form_data.get("petFriendly"):
-        results.exclude(pet_friendly=False)
+        results = TurfType.objects.filter(category__name=form_data.get('userCategory')).exclude(pet_friendly=False)[:3]
     elif form_data.get("sportsField"):
-        results.exclude(sports_field=False)
+        results = TurfType.objects.filter(category__name=form_data.get('userCategory')).exclude(sports_field=False)[:3]
+    else:
+        results = TurfType.objects.filter(category__name=form_data.get('userCategory'))[:3]
 
     context = {"results": results}
 
@@ -59,7 +61,7 @@ def download_packet(request):
 
 
     session_key = request.session.session_key
-    packet_path = os.path.join(settings.BASE_DIR, "media", f"packet__{session_key}.pdf")
+    packet_path = os.path.join(settings.BASE_DIR, "media", f"packet_{session_key}.pdf")
 
     with open(packet_path, "rb") as f:
         response = HttpResponse(f, content_type="application/pdf")

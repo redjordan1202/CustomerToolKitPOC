@@ -17,7 +17,7 @@
             <option value="Municipality">Municipality</option>
         </select>
         
-        <div id="modifierContainer">
+        <div id="modifierContainer" style="display: none">
             <label for="modifierQuestion" id="modifierQuestionLabel">I am looking for pet friendly turf</label>
             <input type="checkbox" id="modifierQuestion" name="petFriendly">
         </div>
@@ -33,6 +33,7 @@
     
     userCategory.addEventListener('change', () => {
             console.log(userCategory.value)
+            modifierContainer.style.display = "block"
 
             if (userCategory.value === 'homeowner' ||
                 userCategory.value === 'hoa' ||
@@ -40,8 +41,8 @@
                 modifierQuestionLabel.textContent = "I am looking for Pet Friendly Turf"
                 modifierQuestion.name = "petFriendly"
             } else if (
-                userCategory.value === 'builder' ||
-                userCategory.value === 'municipality') {
+                userCategory.value === 'Builder' ||
+                userCategory.value === 'Municipality') {
                 modifierQuestionLabel.textContent = "I am looking for Sports Field Turf"
                 modifierQuestion.name = "sportsField"
             }
